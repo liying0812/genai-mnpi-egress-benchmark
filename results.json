@@ -1,0 +1,1417 @@
+[
+  {
+    "detector": "D0_keyword",
+    "counts": {
+      "fn": 672,
+      "span_fn": 5208,
+      "tp": 756,
+      "tn": 138
+    },
+    "per_variant": {
+      "none": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54,
+        "tn": 138
+      },
+      "strip_format": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "spaced": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "spelled": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "homoglyph": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "fullwidth": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "zwsp": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "base64": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "hex": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "reversed": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "base32": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "urlencode": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "dotted": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      },
+      "mathbold": {
+        "fn": 48,
+        "span_fn": 372,
+        "tp": 54
+      }
+    },
+    "per_category": {
+      "pii": {
+        "fn": 168
+      },
+      "account": {
+        "fn": 252
+      },
+      "mnpi": {
+        "tp": 504
+      },
+      "benign": {
+        "tn": 138
+      },
+      "mnpi_unmarked": {
+        "fn": 168,
+        "tp": 84
+      },
+      "strategy": {
+        "fn": 84,
+        "tp": 168
+      }
+    },
+    "per_stratum": {
+      "paired_public": {
+        "tn": 18
+      },
+      "clean": {
+        "tn": 70
+      },
+      "near_miss": {
+        "tn": 50
+      }
+    },
+    "per_cat_none": {
+      "pii": {
+        "fn": 12
+      },
+      "_span": {
+        "fn": 132
+      },
+      "_spanfull": {
+        "fn": 132
+      },
+      "account": {
+        "fn": 18
+      },
+      "mnpi": {
+        "tp": 36
+      },
+      "_spanx": {
+        "fn": 240
+      },
+      "_spanxfull": {
+        "fn": 240
+      },
+      "mnpi_unmarked": {
+        "fn": 12,
+        "tp": 6
+      },
+      "strategy": {
+        "fn": 6,
+        "tp": 12
+      }
+    },
+    "per_variant_span": {
+      "none": {
+        "fn": 372
+      },
+      "strip_format": {
+        "fn": 372
+      },
+      "spaced": {
+        "fn": 372
+      },
+      "spelled": {
+        "fn": 372
+      },
+      "homoglyph": {
+        "fn": 372
+      },
+      "fullwidth": {
+        "fn": 372
+      },
+      "zwsp": {
+        "fn": 372
+      },
+      "base64": {
+        "fn": 372
+      },
+      "hex": {
+        "fn": 372
+      },
+      "reversed": {
+        "fn": 372
+      },
+      "base32": {
+        "fn": 372
+      },
+      "urlencode": {
+        "fn": 372
+      },
+      "dotted": {
+        "fn": 372
+      },
+      "mathbold": {
+        "fn": 372
+      }
+    },
+    "ms_per_prompt": 0.07607795849297543,
+    "paired": {
+      "pairs": 18,
+      "both": 0,
+      "only_unannounced": 6,
+      "only_announced": 0,
+      "neither": 12,
+      "concordant": 12,
+      "scenarios": 3,
+      "scenarios_correct": 1,
+      "by_template": {
+        "board_unmarked": 6,
+        "earnings_unmarked": 0,
+        "mna_unmarked": 0
+      }
+    },
+    "none_recall_ci": [
+      0.5294117647058824,
+      0.29411764705882354,
+      0.7647058823529411
+    ]
+  },
+  {
+    "detector": "D1_pattern",
+    "counts": {
+      "tp": 343,
+      "span_fn": 4582,
+      "span_tp": 626,
+      "fn": 1085,
+      "fp": 26,
+      "tn": 112
+    },
+    "per_variant": {
+      "none": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30,
+        "fp": 26,
+        "tn": 112
+      },
+      "strip_format": {
+        "tp": 60,
+        "span_fn": 246,
+        "span_tp": 126,
+        "fn": 42
+      },
+      "spaced": {
+        "fn": 95,
+        "span_fn": 365,
+        "tp": 7,
+        "span_tp": 7
+      },
+      "spelled": {
+        "tp": 24,
+        "span_fn": 348,
+        "span_tp": 24,
+        "fn": 78
+      },
+      "homoglyph": {
+        "tp": 60,
+        "span_fn": 251,
+        "span_tp": 121,
+        "fn": 42
+      },
+      "fullwidth": {
+        "fn": 78,
+        "span_fn": 342,
+        "tp": 24,
+        "span_tp": 30
+      },
+      "zwsp": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "base64": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "hex": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "reversed": {
+        "fn": 78,
+        "span_fn": 348,
+        "tp": 24,
+        "span_tp": 24
+      },
+      "base32": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "urlencode": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "dotted": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "mathbold": {
+        "tp": 72,
+        "span_fn": 228,
+        "span_tp": 144,
+        "fn": 30
+      }
+    },
+    "per_category": {
+      "pii": {
+        "tp": 54,
+        "fn": 114
+      },
+      "account": {
+        "tp": 121,
+        "fn": 131
+      },
+      "mnpi": {
+        "tp": 84,
+        "fn": 420
+      },
+      "benign": {
+        "fp": 26,
+        "tn": 112
+      },
+      "mnpi_unmarked": {
+        "tp": 24,
+        "fn": 228
+      },
+      "strategy": {
+        "tp": 60,
+        "fn": 192
+      }
+    },
+    "per_stratum": {
+      "paired_public": {
+        "fp": 6,
+        "tn": 12
+      },
+      "clean": {
+        "tn": 70
+      },
+      "near_miss": {
+        "fp": 20,
+        "tn": 30
+      }
+    },
+    "per_cat_none": {
+      "pii": {
+        "tp": 12
+      },
+      "_span": {
+        "fn": 30,
+        "tp": 102
+      },
+      "_spanfull": {
+        "fn": 30,
+        "tp": 102
+      },
+      "account": {
+        "tp": 18
+      },
+      "mnpi": {
+        "tp": 24,
+        "fn": 12
+      },
+      "_spanx": {
+        "tp": 48,
+        "fn": 192
+      },
+      "_spanxfull": {
+        "tp": 42,
+        "fn": 198
+      },
+      "mnpi_unmarked": {
+        "tp": 6,
+        "fn": 12
+      },
+      "strategy": {
+        "tp": 12,
+        "fn": 6
+      }
+    },
+    "per_variant_span": {
+      "none": {
+        "fn": 222,
+        "tp": 150
+      },
+      "strip_format": {
+        "fn": 246,
+        "tp": 126
+      },
+      "spaced": {
+        "fn": 365,
+        "tp": 7
+      },
+      "spelled": {
+        "fn": 348,
+        "tp": 24
+      },
+      "homoglyph": {
+        "fn": 251,
+        "tp": 121
+      },
+      "fullwidth": {
+        "fn": 342,
+        "tp": 30
+      },
+      "zwsp": {
+        "fn": 372
+      },
+      "base64": {
+        "fn": 372
+      },
+      "hex": {
+        "fn": 372
+      },
+      "reversed": {
+        "fn": 348,
+        "tp": 24
+      },
+      "base32": {
+        "fn": 372
+      },
+      "urlencode": {
+        "fn": 372
+      },
+      "dotted": {
+        "fn": 372
+      },
+      "mathbold": {
+        "fn": 228,
+        "tp": 144
+      }
+    },
+    "ms_per_prompt": 0.08292156577266303,
+    "paired": {
+      "pairs": 18,
+      "both": 6,
+      "only_unannounced": 0,
+      "only_announced": 0,
+      "neither": 12,
+      "concordant": 18,
+      "scenarios": 3,
+      "scenarios_correct": 0,
+      "by_template": {
+        "board_unmarked": 0,
+        "earnings_unmarked": 0,
+        "mna_unmarked": 0
+      }
+    },
+    "none_recall_ci": [
+      0.7058823529411765,
+      0.47058823529411764,
+      0.8823529411764706
+    ]
+  },
+  {
+    "detector": "D2_normalized",
+    "counts": {
+      "tp": 538,
+      "span_fn": 4162,
+      "span_tp": 1046,
+      "fn": 890,
+      "fp": 26,
+      "tn": 112
+    },
+    "per_variant": {
+      "none": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30,
+        "fp": 26,
+        "tn": 112
+      },
+      "strip_format": {
+        "tp": 60,
+        "span_fn": 246,
+        "span_tp": 126,
+        "fn": 42
+      },
+      "spaced": {
+        "tp": 36,
+        "span_fn": 329,
+        "span_tp": 43,
+        "fn": 66
+      },
+      "spelled": {
+        "tp": 57,
+        "span_fn": 270,
+        "span_tp": 102,
+        "fn": 45
+      },
+      "homoglyph": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30
+      },
+      "fullwidth": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30
+      },
+      "zwsp": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30
+      },
+      "base64": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "hex": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "reversed": {
+        "tp": 25,
+        "span_fn": 347,
+        "span_tp": 25,
+        "fn": 77
+      },
+      "base32": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "urlencode": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "dotted": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "mathbold": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30
+      }
+    },
+    "per_category": {
+      "pii": {
+        "tp": 97,
+        "fn": 71
+      },
+      "account": {
+        "tp": 162,
+        "fn": 90
+      },
+      "mnpi": {
+        "tp": 152,
+        "fn": 352
+      },
+      "benign": {
+        "fp": 26,
+        "tn": 112
+      },
+      "mnpi_unmarked": {
+        "tp": 37,
+        "fn": 215
+      },
+      "strategy": {
+        "tp": 90,
+        "fn": 162
+      }
+    },
+    "per_stratum": {
+      "paired_public": {
+        "fp": 6,
+        "tn": 12
+      },
+      "clean": {
+        "tn": 70
+      },
+      "near_miss": {
+        "fp": 20,
+        "tn": 30
+      }
+    },
+    "per_cat_none": {
+      "pii": {
+        "tp": 12
+      },
+      "_span": {
+        "fn": 30,
+        "tp": 102
+      },
+      "_spanfull": {
+        "fn": 30,
+        "tp": 102
+      },
+      "account": {
+        "tp": 18
+      },
+      "mnpi": {
+        "tp": 24,
+        "fn": 12
+      },
+      "_spanx": {
+        "tp": 48,
+        "fn": 192
+      },
+      "_spanxfull": {
+        "tp": 42,
+        "fn": 198
+      },
+      "mnpi_unmarked": {
+        "tp": 6,
+        "fn": 12
+      },
+      "strategy": {
+        "tp": 12,
+        "fn": 6
+      }
+    },
+    "per_variant_span": {
+      "none": {
+        "fn": 222,
+        "tp": 150
+      },
+      "strip_format": {
+        "fn": 246,
+        "tp": 126
+      },
+      "spaced": {
+        "fn": 329,
+        "tp": 43
+      },
+      "spelled": {
+        "fn": 270,
+        "tp": 102
+      },
+      "homoglyph": {
+        "fn": 222,
+        "tp": 150
+      },
+      "fullwidth": {
+        "fn": 222,
+        "tp": 150
+      },
+      "zwsp": {
+        "fn": 222,
+        "tp": 150
+      },
+      "base64": {
+        "fn": 372
+      },
+      "hex": {
+        "fn": 372
+      },
+      "reversed": {
+        "fn": 347,
+        "tp": 25
+      },
+      "base32": {
+        "fn": 372
+      },
+      "urlencode": {
+        "fn": 372
+      },
+      "dotted": {
+        "fn": 372
+      },
+      "mathbold": {
+        "fn": 222,
+        "tp": 150
+      }
+    },
+    "ms_per_prompt": 0.5561061008939119,
+    "paired": {
+      "pairs": 18,
+      "both": 6,
+      "only_unannounced": 0,
+      "only_announced": 0,
+      "neither": 12,
+      "concordant": 18,
+      "scenarios": 3,
+      "scenarios_correct": 0,
+      "by_template": {
+        "board_unmarked": 0,
+        "earnings_unmarked": 0,
+        "mna_unmarked": 0
+      }
+    },
+    "none_recall_ci": [
+      0.7058823529411765,
+      0.47058823529411764,
+      0.8823529411764706
+    ]
+  },
+  {
+    "detector": "D3_decoded",
+    "counts": {
+      "tp": 675,
+      "span_fn": 3862,
+      "span_tp": 1346,
+      "fn": 753,
+      "fp": 26,
+      "tn": 112
+    },
+    "per_variant": {
+      "none": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30,
+        "fp": 26,
+        "tn": 112
+      },
+      "strip_format": {
+        "tp": 60,
+        "span_fn": 246,
+        "span_tp": 126,
+        "fn": 42
+      },
+      "spaced": {
+        "tp": 36,
+        "span_fn": 329,
+        "span_tp": 43,
+        "fn": 66
+      },
+      "spelled": {
+        "tp": 57,
+        "span_fn": 270,
+        "span_tp": 102,
+        "fn": 45
+      },
+      "homoglyph": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30
+      },
+      "fullwidth": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30
+      },
+      "zwsp": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30
+      },
+      "base64": {
+        "tp": 66,
+        "span_fn": 228,
+        "span_tp": 144,
+        "fn": 36
+      },
+      "hex": {
+        "tp": 66,
+        "span_fn": 228,
+        "span_tp": 144,
+        "fn": 36
+      },
+      "reversed": {
+        "tp": 30,
+        "span_fn": 335,
+        "span_tp": 37,
+        "fn": 72
+      },
+      "base32": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "urlencode": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "dotted": {
+        "fn": 102,
+        "span_fn": 372
+      },
+      "mathbold": {
+        "tp": 72,
+        "span_fn": 222,
+        "span_tp": 150,
+        "fn": 30
+      }
+    },
+    "per_category": {
+      "pii": {
+        "tp": 126,
+        "fn": 42
+      },
+      "account": {
+        "tp": 198,
+        "fn": 54
+      },
+      "mnpi": {
+        "tp": 188,
+        "fn": 316
+      },
+      "benign": {
+        "fp": 26,
+        "tn": 112
+      },
+      "mnpi_unmarked": {
+        "tp": 49,
+        "fn": 203
+      },
+      "strategy": {
+        "tp": 114,
+        "fn": 138
+      }
+    },
+    "per_stratum": {
+      "paired_public": {
+        "fp": 6,
+        "tn": 12
+      },
+      "clean": {
+        "tn": 70
+      },
+      "near_miss": {
+        "fp": 20,
+        "tn": 30
+      }
+    },
+    "per_cat_none": {
+      "pii": {
+        "tp": 12
+      },
+      "_span": {
+        "fn": 30,
+        "tp": 102
+      },
+      "_spanfull": {
+        "fn": 30,
+        "tp": 102
+      },
+      "account": {
+        "tp": 18
+      },
+      "mnpi": {
+        "tp": 24,
+        "fn": 12
+      },
+      "_spanx": {
+        "tp": 48,
+        "fn": 192
+      },
+      "_spanxfull": {
+        "tp": 42,
+        "fn": 198
+      },
+      "mnpi_unmarked": {
+        "tp": 6,
+        "fn": 12
+      },
+      "strategy": {
+        "tp": 12,
+        "fn": 6
+      }
+    },
+    "per_variant_span": {
+      "none": {
+        "fn": 222,
+        "tp": 150
+      },
+      "strip_format": {
+        "fn": 246,
+        "tp": 126
+      },
+      "spaced": {
+        "fn": 329,
+        "tp": 43
+      },
+      "spelled": {
+        "fn": 270,
+        "tp": 102
+      },
+      "homoglyph": {
+        "fn": 222,
+        "tp": 150
+      },
+      "fullwidth": {
+        "fn": 222,
+        "tp": 150
+      },
+      "zwsp": {
+        "fn": 222,
+        "tp": 150
+      },
+      "base64": {
+        "fn": 228,
+        "tp": 144
+      },
+      "hex": {
+        "fn": 228,
+        "tp": 144
+      },
+      "reversed": {
+        "fn": 335,
+        "tp": 37
+      },
+      "base32": {
+        "fn": 372
+      },
+      "urlencode": {
+        "fn": 372
+      },
+      "dotted": {
+        "fn": 372
+      },
+      "mathbold": {
+        "fn": 222,
+        "tp": 150
+      }
+    },
+    "ms_per_prompt": 0.5625137911878413,
+    "paired": {
+      "pairs": 18,
+      "both": 6,
+      "only_unannounced": 0,
+      "only_announced": 0,
+      "neither": 12,
+      "concordant": 18,
+      "scenarios": 3,
+      "scenarios_correct": 0,
+      "by_template": {
+        "board_unmarked": 0,
+        "earnings_unmarked": 0,
+        "mna_unmarked": 0
+      }
+    },
+    "none_recall_ci": [
+      0.7058823529411765,
+      0.47058823529411764,
+      0.8823529411764706
+    ]
+  },
+  {
+    "detector": "D1p_presidio",
+    "counts": {
+      "tp": 1213,
+      "span_tp": 1564,
+      "span_fn": 3644,
+      "fn": 215,
+      "fp": 57,
+      "tn": 81
+    },
+    "per_variant": {
+      "none": {
+        "tp": 102,
+        "span_tp": 196,
+        "span_fn": 176,
+        "fp": 57,
+        "tn": 81
+      },
+      "strip_format": {
+        "tp": 81,
+        "span_fn": 277,
+        "span_tp": 95,
+        "fn": 21
+      },
+      "spaced": {
+        "tp": 77,
+        "span_fn": 309,
+        "span_tp": 63,
+        "fn": 25
+      },
+      "spelled": {
+        "tp": 102,
+        "span_tp": 180,
+        "span_fn": 192
+      },
+      "homoglyph": {
+        "tp": 102,
+        "span_tp": 223,
+        "span_fn": 149
+      },
+      "fullwidth": {
+        "tp": 97,
+        "span_tp": 177,
+        "span_fn": 195,
+        "fn": 5
+      },
+      "zwsp": {
+        "tp": 76,
+        "span_fn": 304,
+        "fn": 26,
+        "span_tp": 68
+      },
+      "base64": {
+        "tp": 74,
+        "span_fn": 302,
+        "span_tp": 70,
+        "fn": 28
+      },
+      "hex": {
+        "tp": 56,
+        "span_fn": 342,
+        "span_tp": 30,
+        "fn": 46
+      },
+      "reversed": {
+        "tp": 78,
+        "span_fn": 323,
+        "span_tp": 49,
+        "fn": 24
+      },
+      "base32": {
+        "tp": 102,
+        "span_fn": 318,
+        "span_tp": 54
+      },
+      "urlencode": {
+        "tp": 73,
+        "span_fn": 320,
+        "span_tp": 52,
+        "fn": 29
+      },
+      "dotted": {
+        "tp": 91,
+        "span_fn": 245,
+        "span_tp": 127,
+        "fn": 11
+      },
+      "mathbold": {
+        "tp": 102,
+        "span_tp": 180,
+        "span_fn": 192
+      }
+    },
+    "per_category": {
+      "pii": {
+        "tp": 152,
+        "fn": 16
+      },
+      "account": {
+        "tp": 212,
+        "fn": 40
+      },
+      "mnpi": {
+        "tp": 397,
+        "fn": 107
+      },
+      "benign": {
+        "fp": 57,
+        "tn": 81
+      },
+      "mnpi_unmarked": {
+        "tp": 252
+      },
+      "strategy": {
+        "tp": 200,
+        "fn": 52
+      }
+    },
+    "per_stratum": {
+      "paired_public": {
+        "fp": 18
+      },
+      "clean": {
+        "tn": 63,
+        "fp": 7
+      },
+      "near_miss": {
+        "fp": 32,
+        "tn": 18
+      }
+    },
+    "per_cat_none": {
+      "pii": {
+        "tp": 12
+      },
+      "_span": {
+        "tp": 103,
+        "fn": 29
+      },
+      "_spanfull": {
+        "tp": 91,
+        "fn": 41
+      },
+      "account": {
+        "tp": 18
+      },
+      "mnpi": {
+        "tp": 36
+      },
+      "_spanx": {
+        "fn": 147,
+        "tp": 93
+      },
+      "_spanxfull": {
+        "fn": 147,
+        "tp": 93
+      },
+      "mnpi_unmarked": {
+        "tp": 18
+      },
+      "strategy": {
+        "tp": 18
+      }
+    },
+    "per_variant_span": {
+      "none": {
+        "tp": 196,
+        "fn": 176
+      },
+      "strip_format": {
+        "fn": 277,
+        "tp": 95
+      },
+      "spaced": {
+        "fn": 309,
+        "tp": 63
+      },
+      "spelled": {
+        "tp": 180,
+        "fn": 192
+      },
+      "homoglyph": {
+        "tp": 223,
+        "fn": 149
+      },
+      "fullwidth": {
+        "tp": 177,
+        "fn": 195
+      },
+      "zwsp": {
+        "fn": 304,
+        "tp": 68
+      },
+      "base64": {
+        "fn": 302,
+        "tp": 70
+      },
+      "hex": {
+        "fn": 342,
+        "tp": 30
+      },
+      "reversed": {
+        "fn": 323,
+        "tp": 49
+      },
+      "base32": {
+        "fn": 318,
+        "tp": 54
+      },
+      "urlencode": {
+        "fn": 320,
+        "tp": 52
+      },
+      "dotted": {
+        "fn": 245,
+        "tp": 127
+      },
+      "mathbold": {
+        "tp": 180,
+        "fn": 192
+      }
+    },
+    "ms_per_prompt": 16.170368356960385,
+    "paired": {
+      "pairs": 18,
+      "both": 18,
+      "only_unannounced": 0,
+      "only_announced": 0,
+      "neither": 0,
+      "concordant": 18,
+      "scenarios": 3,
+      "scenarios_correct": 0,
+      "by_template": {
+        "board_unmarked": 0,
+        "earnings_unmarked": 0,
+        "mna_unmarked": 0
+      }
+    },
+    "none_recall_ci": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "detector": "D4_opus5",
+    "counts": {
+      "tp": 950,
+      "span_tp": 3143,
+      "span_fn": 2065,
+      "fn": 478,
+      "tn": 134,
+      "fp": 4
+    },
+    "per_variant": {
+      "none": {
+        "tp": 102,
+        "span_tp": 339,
+        "span_fn": 33,
+        "tn": 134,
+        "fp": 4
+      },
+      "strip_format": {
+        "tp": 102,
+        "span_tp": 346,
+        "span_fn": 26
+      },
+      "spaced": {
+        "tp": 97,
+        "span_fn": 84,
+        "span_tp": 288,
+        "fn": 5
+      },
+      "spelled": {
+        "tp": 102,
+        "span_tp": 336,
+        "span_fn": 36
+      },
+      "homoglyph": {
+        "tp": 102,
+        "span_tp": 341,
+        "span_fn": 31
+      },
+      "fullwidth": {
+        "tp": 101,
+        "span_tp": 332,
+        "span_fn": 40,
+        "fn": 1
+      },
+      "zwsp": {
+        "tp": 102,
+        "span_tp": 342,
+        "span_fn": 30
+      },
+      "base64": {
+        "fn": 101,
+        "span_fn": 369,
+        "tp": 1,
+        "span_tp": 3
+      },
+      "hex": {
+        "fn": 100,
+        "span_fn": 366,
+        "tp": 2,
+        "span_tp": 6
+      },
+      "reversed": {
+        "tp": 34,
+        "span_tp": 111,
+        "span_fn": 261,
+        "fn": 68
+      },
+      "base32": {
+        "tp": 53,
+        "span_tp": 196,
+        "span_fn": 176,
+        "fn": 49
+      },
+      "urlencode": {
+        "fn": 101,
+        "span_fn": 369,
+        "tp": 1,
+        "span_tp": 3
+      },
+      "dotted": {
+        "fn": 53,
+        "span_fn": 211,
+        "tp": 49,
+        "span_tp": 161
+      },
+      "mathbold": {
+        "tp": 102,
+        "span_tp": 339,
+        "span_fn": 33
+      }
+    },
+    "per_category": {
+      "pii": {
+        "tp": 122,
+        "fn": 46
+      },
+      "account": {
+        "tp": 187,
+        "fn": 65
+      },
+      "mnpi": {
+        "tp": 301,
+        "fn": 203
+      },
+      "benign": {
+        "tn": 134,
+        "fp": 4
+      },
+      "mnpi_unmarked": {
+        "tp": 161,
+        "fn": 91
+      },
+      "strategy": {
+        "tp": 179,
+        "fn": 73
+      }
+    },
+    "per_stratum": {
+      "paired_public": {
+        "tn": 18
+      },
+      "clean": {
+        "tn": 70
+      },
+      "near_miss": {
+        "fp": 4,
+        "tn": 46
+      }
+    },
+    "per_cat_none": {
+      "pii": {
+        "tp": 12
+      },
+      "_span": {
+        "tp": 124,
+        "fn": 8
+      },
+      "_spanfull": {
+        "tp": 124,
+        "fn": 8
+      },
+      "account": {
+        "tp": 18
+      },
+      "mnpi": {
+        "tp": 36
+      },
+      "_spanx": {
+        "tp": 215,
+        "fn": 25
+      },
+      "_spanxfull": {
+        "tp": 215,
+        "fn": 25
+      },
+      "mnpi_unmarked": {
+        "tp": 18
+      },
+      "strategy": {
+        "tp": 18
+      }
+    },
+    "per_variant_span": {
+      "none": {
+        "tp": 339,
+        "fn": 33
+      },
+      "strip_format": {
+        "tp": 346,
+        "fn": 26
+      },
+      "spaced": {
+        "fn": 84,
+        "tp": 288
+      },
+      "spelled": {
+        "tp": 336,
+        "fn": 36
+      },
+      "homoglyph": {
+        "tp": 341,
+        "fn": 31
+      },
+      "fullwidth": {
+        "tp": 332,
+        "fn": 40
+      },
+      "zwsp": {
+        "tp": 342,
+        "fn": 30
+      },
+      "base64": {
+        "fn": 369,
+        "tp": 3
+      },
+      "hex": {
+        "fn": 366,
+        "tp": 6
+      },
+      "reversed": {
+        "tp": 111,
+        "fn": 261
+      },
+      "base32": {
+        "tp": 196,
+        "fn": 176
+      },
+      "urlencode": {
+        "fn": 369,
+        "tp": 3
+      },
+      "dotted": {
+        "fn": 211,
+        "tp": 161
+      },
+      "mathbold": {
+        "tp": 339,
+        "fn": 33
+      }
+    },
+    "ms_per_prompt": 3322.086583390164,
+    "paired": {
+      "pairs": 18,
+      "both": 0,
+      "only_unannounced": 18,
+      "only_announced": 0,
+      "neither": 0,
+      "concordant": 0,
+      "scenarios": 3,
+      "scenarios_correct": 3,
+      "by_template": {
+        "board_unmarked": 6,
+        "earnings_unmarked": 6,
+        "mna_unmarked": 6
+      }
+    },
+    "none_recall_ci": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  }
+]
