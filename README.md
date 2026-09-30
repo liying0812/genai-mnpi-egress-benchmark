@@ -103,7 +103,7 @@ Recall with no evasion, 95% template-clustered bootstrap interval (2000 draws). 
 | D3_decoded | 6 | 0 | 0 | 12 | 0/3 |
 | D1p_presidio | 18 | 0 | 0 | 0 | 0/3 |
 
-*Only `only unannounced` is the desired decision. Pairs share identical entity payloads and differ in a short disclosure-status phrase. The eighteen pairs are six instantiations of each of three scenarios, so the last column -- scenarios on which every instantiation was decided correctly -- is the unit of evidence. No significance test is reported: instantiations within a scenario are not independent.*
+*Only `only unannounced` is the desired decision. Pairs share identical entity payloads and differ in a short disclosure-status phrase. The eighteen pairs are six instantiations of each of three scenarios, so the last column -- scenarios on which every instantiation was decided correctly -- is the unit of evidence. No significance test is reported: the independent unit is the scenario, leaving only three scenario-level observations.*
 
 ### Table D. False positives, by negative stratum
 
@@ -143,14 +143,15 @@ Withholding PERSON, DATE_TIME and US_DRIVER_LICENSE from the cached output leave
 
 ### What these show
 
-1. **No identifier-based detector tracks disclosure status.** Over 18 pairs
+1. **No identifier- or entity-centric detector tracks disclosure status.** Over 18 pairs
    (6 instantiations of each of 3 scenarios): D1-D3 flag both members six times
    and neither twelve times; Presidio flags both in all eighteen. Neither
    separates any scenario. **D0 separates one** -- the board scenario ends
    "not yet filed", a phrase on its list, while its twin ends "filed in an
-   8-K". A keyword control is exactly as good as its enumeration. No
-   significance test: instantiations within a scenario are not independent, so
-   the unit of evidence is 3, and D0's six successes are one scenario.
+   8-K". The keyword tier succeeds only when the relevant disclosure-status
+   wording is explicitly represented in its list. No significance test: the
+   independent unit is the scenario, so the unit of evidence is 3, and D0's
+   six successes are one scenario.
 2. **A keyword list looks like the answer and is not.** 1.000 recall on MNPI
    prompts carrying boilerplate, 0.333 on unmarked ones -- and the one it still
    catches ends "not yet filed", a phrase on its own list. Field coverage is

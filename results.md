@@ -2,10 +2,10 @@
 
 | Detector | Recall, unmodified input | Field-hit (PII+acct) | Complete-field (PII+acct) | ms/prompt |
 |---|---|---|---|---|
-| D0_keyword | 0.529 | 0.000 | 0.000 | 0.08 |
-| D1_pattern | 0.706 | 0.773 | 0.773 | 0.08 |
-| D2_normalized | 0.706 | 0.773 | 0.773 | 0.44 |
-| D3_decoded | 0.706 | 0.773 | 0.773 | 0.53 |
+| D0_keyword | 0.529 | 0.000 | 0.000 | 0.06 |
+| D1_pattern | 0.706 | 0.773 | 0.773 | 0.06 |
+| D2_normalized | 0.706 | 0.773 | 0.773 | 0.43 |
+| D3_decoded | 0.706 | 0.773 | 0.773 | 0.62 |
 | D1p_presidio | 1.000 | 0.780 | 0.689 | 16.17 |
 | D4_opus5 | 1.000 | 0.939 | 0.939 | 3322.09 |
 

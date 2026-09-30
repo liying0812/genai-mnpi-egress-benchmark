@@ -552,12 +552,13 @@ def latex_tables(results, variants, cov):
     pairs_table = _wrap(
         "Eighteen pairs sharing entity payloads and differing in a short "
         "disclosure-status phrase. Only `only unann.' is the desired decision; "
-        "the remainder either flag both members or neither (full breakdown "
-        "released with the benchmark). The pairs are six instantiations of "
-        "each of three scenarios, so "
+        "the other outcomes are `only ann.', both, or neither, with the "
+        "latter two reported in the released breakdown. The pairs are six "
+        "instantiations of each of three scenarios, so "
         "`scen.' -- scenarios decided correctly throughout -- is the unit of "
-        "evidence; no test is reported because instantiations within a scenario "
-        "are not independent.",
+        "evidence; no significance test is reported because the independent "
+        "unit is the scenario, leaving only three scenario-level "
+        "observations.",
         "tab:pairs", "lrrr",
         ["Detector", "only unann.", "only ann.", "scen."],
         rows, tight=True)
