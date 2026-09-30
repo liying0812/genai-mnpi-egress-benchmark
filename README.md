@@ -54,7 +54,7 @@ are Luhn-valid but random, names and firms are invented.
 | `D1_pattern` | Handcrafted regular expressions, Luhn-gated cards. **Not** a commercial DLP product |
 | `D2_normalized` | D1 + NFKC, zero-width strip, homoglyph fold, digit-word and separator collapse |
 | `D3_decoded` | D2 + bounded decode over base64 / hex / reversed tokens |
-| `D1'_presidio` | Microsoft Presidio 2.2.364, spaCy 3.8.16 / `en_core_web_lg` 3.8.0, en, 16 recognisers. Raw scores captured at threshold 0; thresholds applied offline. An **external PII baseline**, not a DLP product |
+| `D1'_presidio` | Presidio 2.2.360, spaCy 3.7.5 / `en_core_web_lg` 3.7.1, en, 16 recognisers. Raw scores captured at threshold 0; thresholds applied offline. An **external PII baseline**, not a DLP product |
 | `D4_*` | Semantic tier, a Claude model. Run 2026-09-28 against `claude-opus-5`; see below |
 
 ## Results
