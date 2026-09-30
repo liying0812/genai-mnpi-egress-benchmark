@@ -113,7 +113,7 @@ Recall with no evasion, 95% template-clustered bootstrap interval (2000 draws). 
 | D1_pattern | 0/70 | 20/50 | 6/18 |
 | D2_normalized | 0/70 | 20/50 | 6/18 |
 | D3_decoded | 0/70 | 20/50 | 6/18 |
-| D1p_presidio | 14/70 | 33/50 | 18/18 |
+| D1p_presidio | 7/70 | 32/50 | 18/18 |
 
 *paired-public prompts restate the unmarked MNPI prompts as announced events, with identical entity payloads. No identifier separates them; one of the three disclosure phrasings does coincide with a term on D0's list, which Table E reports.*
 
@@ -124,9 +124,9 @@ Recall with no evasion, 95% template-clustered bootstrap interval (2000 draws). 
 | PERSON | 54 | 18 | 18 |
 | DATE_TIME | 30 | 18 | 18 |
 | US_DRIVER_LICENSE | 12 | 6 | 6 |
+| LOCATION | 1 | 0 | 0 |
 
-
-Withholding PERSON, DATE_TIME and US_DRIVER_LICENSE from the cached output leaves recall of 0/54 on MNPI prompts and 0/18 on the unannounced scenarios. This is a post-hoc ablation for mechanism attribution, not a proposed detector configuration.
+Withholding PERSON, DATE_TIME and US_DRIVER_LICENSE from the cached output leaves recall of 1/54 on MNPI prompts and 0/18 on the unannounced scenarios. This is a post-hoc ablation for mechanism attribution, not a proposed detector configuration.
 
 *Counts are prompts in which the type fired at least once. The unmarked MNPI column and the public-twin column are the same eighteen scenarios in their unannounced and announced forms.*
 
@@ -134,10 +134,10 @@ Withholding PERSON, DATE_TIME and US_DRIVER_LICENSE from the cached output leave
 
 | threshold | recall (no evasion) | FP on 70 clean | pairs correct |
 |---|---|---|---|
-| 0.00 | 1.000 | 14 | 0/18 |
-| 0.35 | 1.000 | 14 | 0/18 |
-| 0.50 | 1.000 | 14 | 0/18 |
-| 0.85 | 1.000 | 14 | 0/18 |
+| 0.00 | 1.000 | 7 | 0/18 |
+| 0.35 | 1.000 | 7 | 0/18 |
+| 0.50 | 1.000 | 7 | 0/18 |
+| 0.85 | 1.000 | 7 | 0/18 |
 
 *0.00 is Presidio's own default. No threshold trades the false positives away without losing recall, and none produces a correct pair decision.*
 
@@ -161,12 +161,12 @@ Withholding PERSON, DATE_TIME and US_DRIVER_LICENSE from the cached output leave
    the four introduced afterwards. Presidio fires more often on those but rarely
    locates the payload -- base32: 0.480 prompt recall, **0.043 annotated-field coverage**.
 4. **High recall is bought with false positives, not judgement.** Presidio
-   reaches 1.000 recall on every class and flags 14/70 clean negatives
+   reaches 1.000 recall on every class and flags 7/70 clean negatives
    ("Basel" as a LOCATION, "quarterly" as a DATE_TIME). Its MNPI detections are
    attributable to three entity types and no others: PERSON 54/54, DATE_TIME
    30/54, US_DRIVER_LICENSE 12/54. Two involve systematic errors ("these
    minutes" read as a date, `Q3` as a licence number). Withholding those three
-   types from the cached output drops MNPI recall to **0/54**. Attribution
+   types from the cached output drops MNPI recall to **1/54**. Attribution
    counts are identical between unannounced and announced twins.
 5. **Field-hit is not redaction.** Complete-field coverage -- the union of
    predicted spans covering every character, a conservative criterion for
