@@ -449,20 +449,27 @@ def _tex(s):
     return s.replace("_", r"\_")
 
 
-def _wrap(caption, label, cols, header, rows, wide=False):
+def _wrap(caption, label, cols, header, rows, wide=False, tight=False):
     # `wide=True` emits a `table*`, which spans both IEEEtran columns.
     # Tables with more than ~5 columns overflow a single 3.5in column and
     # visually collide with the adjacent column's text -- use `wide` for any
-    # table with 6+ columns (label included).
+    # table with 6+ columns (label included), unless `tight` (scriptsize +
+    # reduced column separation) lets it fit single-column instead: a
+    # `table*` can only float to the top/bottom of a page and costs more
+    # vertical space than a same-content single-column table.
     # Single-column tables get the IEEE sample's [htbp] for placement
     # flexibility (matches the official IEEE conference template); a
     # `table*` spans both columns and can only float to the top/bottom of a
     # page, so it keeps the narrower [t].
     env = "table*" if wide else "table"
     placement = "t" if wide else "htbp"
-    L = [rf"\begin{{{env}}}[{placement}]", r"\centering", r"\footnotesize",
+    size = r"\scriptsize" if tight else r"\footnotesize"
+    L = [rf"\begin{{{env}}}[{placement}]", r"\centering", size,
          rf"\caption{{{caption}}}",
-         rf"\label{{{label}}}", rf"\begin{{tabular}}{{{cols}}}", r"\hline",
+         rf"\label{{{label}}}"]
+    if tight:
+        L.append(r"\setlength{\tabcolsep}{3pt}")
+    L += [rf"\begin{{tabular}}{{{cols}}}", r"\hline",
          " & ".join(header) + r" \\ \hline"]
     L += [" & ".join(r) + r" \\" for r in rows]
     L += [r"\hline", r"\end{tabular}", rf"\end{{{env}}}"]
@@ -483,50 +490,13 @@ def count_templates(records):
 def latex_tables(results, variants, cov):
     out = []
 
-    rows = []
-    for r in results:
-        sp = r["per_cat_none"].get("_span", {})
-        st, sf = sp.get("tp", 0), sp.get("fn", 0)
-        fu = r["per_cat_none"].get("_spanfull", {})
-        ft, ff = fu.get("tp", 0), fu.get("fn", 0)
-        rows.append([_tex(r["detector"]), fmt(cond_recall(r, ["none"])),
-                     fmt(st / (st + sf) if st + sf else float("nan")),
-                     fmt(ft / (ft + ff) if ft + ff else float("nan")),
-                     f"{r['ms_per_prompt']:.2f}"])
-    out.append(_wrap(
-        "Prompt-level detection on unmodified input. Field coverage is reported "
-        "for PII and account data only, where the sensitive content is the "
-        "annotated field and coverage therefore measures redaction; for MNPI "
-        "and strategy the disclosive element is the unannounced proposition, "
-        "which no single field carries, so per-class field results are left to "
-        "the artifact. Field-hit counts any overlap with a gold field; complete "
-        "requires every character of it, which is what redaction needs. No recall pooled over transforms is "
-        "reported -- any such average would be weighted by a transform mix we "
-        "chose -- so per-transform results are in Table~\\ref{tab:evasion}. "
-        "Precision and F1 are omitted because they are prevalence-dependent and "
-        "our prevalence is a design choice. False positives: "
-        "Table~\\ref{tab:fpr}.",
-        "tab:overall", "lrrrr",
-        ["Detector", "Recall", "Field-hit", "Complete", "ms/prompt"], rows))
-
-    PAPER_ROWS = ["none", "zwsp", "spaced", "base64", "hex",
-                  "base32", "urlencode", "dotted", "mathbold"]
-    rows = []
-    for v in [x for x in variants if x in PAPER_ROWS]:
-        cells = [_tex(v) + (" (H)" if v in HELD_OUT else ""),
-                 fmt(cov.get(v, float("nan")))]
-        for r in results:
-            cells.append(fmt(recall_of(r["per_variant"].get(v, {}))))
-        rows.append(cells)
-    out.append(_wrap(
-        "Prompt-level recall by evasion transform, selected rows; the full "
-        "thirteen-transform table with annotated-field coverage is in the "
-        "artifact. (H) marks the four transforms added after the detectors were "
-        "frozen. D1 reaches exactly zero recall under base32, base64, hex, "
-        "percent-encoding and zero-width injection.",
-        "tab:evasion", "lr" + "r" * len(results),
-        ["Evasion", "Cov."] + [_tex(r["detector"]) for r in results], rows,
-        wide=True))
+    # tab:overall (prompt-level detection on unmodified input, as a standalone
+    # table) is no longer emitted -- every number in it (recall, field-hit,
+    # complete, ms/prompt) is already carried by an inline \Fig macro cited in
+    # main.tex \S VI-A/B/F, so the table was pure redundancy against the 6-page
+    # limit. The full breakdown remains in results.md and the released
+    # artifact. (Also formerly here: the per-transform recall table tab:evasion,
+    # removed earlier for the same reason -- see \S VI-C/D/F macros.)
 
     cats = [c for c in sorted(TEMPLATE_COUNTS) if c != "benign"]
 
@@ -539,18 +509,17 @@ def latex_tables(results, variants, cov):
                          str(sum(TEMPLATE_COUNTS.get(k, 0) for k in MNPI_CLASSES))]
                         + [fmt(recall_of(merged_mnpi(r["per_cat_none"])))
                            for r in results])
+    SHORT_DET = {"D0_keyword": "D0", "D1_pattern": "D1", "D2_normalized": "D2",
+                 "D3_decoded": "D3", "D1p_presidio": "D1$'$", "D4_opus5": "D4"}
     out.append(_wrap(
-        "Recall by leak category, no evasion applied. The marked and unmarked "
-        "MNPI rows are subsets of one class, split by whether the prompt "
-        "carries confidentiality boilerplate; the third is their union. Tpl.\\ "
-        "is the number of task templates behind each row. This is the only "
-        "category result not confounded with the evasion transforms, though "
-        "templates and detectors share authorship. Account identifiers and PII "
-        "have syntax a pattern can express; for MNPI and proprietary strategy "
-        "the sensitivity is not definable by identifier syntax.",
+        "Recall by leak category, no evasion applied. Tpl.\\ is the number "
+        "of task templates behind each row; the marked and unmarked MNPI "
+        "rows are subsets of one class, split by confidentiality "
+        "boilerplate, and the third is their union.",
         "tab:category", "lr" + "r" * len(results),
-        ["Category", "Tpl."] + [_tex(r["detector"]) for r in results], rows,
-        wide=True))
+        ["Category", "Tpl."] + [SHORT_DET.get(r["detector"], _tex(r["detector"]))
+                                 for r in results], rows,
+        tight=True))
 
     # Table C2 (pooled over transforms) and the overall-recall column of
     # Table A are deliberately NOT emitted to LaTeX: both are weighted by an
@@ -559,33 +528,34 @@ def latex_tables(results, variants, cov):
 
     rows = []
     for r in results:
-        cells = [_tex(r["detector"])]
+        cells = [SHORT_DET.get(r["detector"], _tex(r["detector"]))]
         for st in ("clean", "near_miss", "paired_public"):
             d = r["per_stratum"].get(st, {})
             cells.append(f"{d.get('fp', 0)}/{d.get('fp', 0) + d.get('tn', 0)}")
         rows.append(cells)
     out.append(_wrap(
-        "False positives by negative stratum, as counts. No pooled rate is "
-        "given: it would depend on a stratum mix we chose. Paired-public "
+        "False positives by negative stratum, as counts. Paired-public "
         "prompts restate the unmarked MNPI prompts as announced events.",
         "tab:fpr", "lrrr",
-        ["Detector", "clean", "near-miss", "paired-public"], rows))
+        ["Detector", "clean", "near-miss", "paired-public"], rows, tight=True))
 
-    rows = [[_tex(r["detector"]), str(r["paired"]["both"]),
+    rows = [[SHORT_DET.get(r["detector"], _tex(r["detector"])),
              str(r["paired"]["only_unannounced"]),
-             str(r["paired"]["only_announced"]), str(r["paired"]["neither"]),
+             str(r["paired"]["only_announced"]),
              f"{r['paired']['scenarios_correct']}/{r['paired']['scenarios']}"]
             for r in results if r.get("paired")]
     out.append(_wrap(
         "Eighteen pairs sharing entity payloads and differing in a short "
-        "disclosure-status phrase. Only `only unann.' is the desired decision. "
-        "The pairs are six instantiations of each of three scenarios, so "
+        "disclosure-status phrase. Only `only unann.' is the desired decision; "
+        "the remainder either flag both members or neither (full breakdown "
+        "released with the benchmark). The pairs are six instantiations of "
+        "each of three scenarios, so "
         "`scen.' -- scenarios decided correctly throughout -- is the unit of "
         "evidence; no test is reported because instantiations within a scenario "
         "are not independent.",
-        "tab:pairs", "lrrrrr",
-        ["Detector", "both", "only unann.", "only ann.", "neither", "scen."],
-        rows))
+        "tab:pairs", "lrrr",
+        ["Detector", "only unann.", "only ann.", "scen."],
+        rows, tight=True))
 
     return "\n\n".join(out)
 
