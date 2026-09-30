@@ -539,12 +539,17 @@ def latex_tables(results, variants, cov):
         "tab:fpr", "lrrr",
         ["Detector", "clean", "near-miss", "paired-public"], rows, tight=True))
 
+    # tab:pairs is built and returned separately (not appended to `out`) so
+    # main() can \input it near its own first textual reference (Sec. VI-D)
+    # instead of grouped with tab:category/tab:fpr at the top of Results --
+    # three floats submitted at once there push tab:pairs a page ahead of
+    # any text that names it.
     rows = [[SHORT_DET.get(r["detector"], _tex(r["detector"])),
              str(r["paired"]["only_unannounced"]),
              str(r["paired"]["only_announced"]),
              f"{r['paired']['scenarios_correct']}/{r['paired']['scenarios']}"]
             for r in results if r.get("paired")]
-    out.append(_wrap(
+    pairs_table = _wrap(
         "Eighteen pairs sharing entity payloads and differing in a short "
         "disclosure-status phrase. Only `only unann.' is the desired decision; "
         "the remainder either flag both members or neither (full breakdown "
@@ -555,9 +560,9 @@ def latex_tables(results, variants, cov):
         "are not independent.",
         "tab:pairs", "lrrr",
         ["Detector", "only unann.", "only ann.", "scen."],
-        rows, tight=True))
+        rows, tight=True)
 
-    return "\n\n".join(out)
+    return "\n\n".join(out), pairs_table
 
 
 def presidio_attribution(records, path):
@@ -783,7 +788,9 @@ def main():
                  "false positives away without losing recall, and none produces "
                  "a correct pair decision.*")
     open(f"{args.out}.md", "w").write(md + "\n")
-    open(f"{args.out}.tex", "w").write(latex_tables(results, variants, cov) + "\n")
+    main_tables, pairs_table = latex_tables(results, variants, cov)
+    open(f"{args.out}.tex", "w").write(main_tables + "\n")
+    open(f"{args.out}-pairs.tex", "w").write(pairs_table + "\n")
     json.dump(results, open(f"{args.out}.json", "w"), indent=2)
     write_macros.attribution = (presidio_attribution(records, args.presidio)
                                 if args.presidio else None)
