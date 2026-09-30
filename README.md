@@ -159,7 +159,7 @@ Withholding PERSON, DATE_TIME and US_DRIVER_LICENSE from the cached output leave
 3. **Hardening does not generalize.** Normalization and decoding recover most of
    the loss to encodings they were written against, and score 0.000 on three of
    the four introduced afterwards. Presidio fires more often on those but rarely
-   locates the payload -- base32: 0.480 prompt recall, **0.043 annotated-field coverage**.
+   locates the payload -- base32: 1.000 prompt recall, **0.145 annotated-field coverage**.
 4. **High recall is bought with false positives, not judgement.** Presidio
    reaches 1.000 recall on every class and flags 7/70 clean negatives
    ("Basel" as a LOCATION, "quarterly" as a DATE_TIME). Its MNPI detections are
@@ -171,8 +171,7 @@ Withholding PERSON, DATE_TIME and US_DRIVER_LICENSE from the cached output leave
 5. **Field-hit is not redaction.** Complete-field coverage -- the union of
    predicted spans covering every character, a conservative criterion for
    full-value redaction -- reverses the ordering against field-hit rate: D1-D3 hold
-   at 0.773, Presidio drops from 0.780 to 0.689 (0/12 complete on ADDRESS,
-   0/24 on MONEY, 1/6 on IBAN).
+   at 0.773, Presidio drops from 0.780 to 0.689.
 6. **The control fails in both directions.** Our tiers: 0/70 clean, 20/50
    near-miss (5 of 13 scenario templates), 6/18 announced twins.
 
